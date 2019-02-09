@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RxJavaBasics</string>
+    <string name="repo_language">Language: %1$s</string>
+    <string name="repo_stars">Stars: %1$d</string>
 </resources>

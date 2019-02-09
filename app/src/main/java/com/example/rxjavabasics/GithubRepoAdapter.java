@@ -1,5 +1,6 @@
 package com.example.rxjavabasics;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,11 @@ import java.util.List;
 public class GithubRepoAdapter extends BaseAdapter {
 
     private List<GithubRepo> githubRepos = new ArrayList<>();
+    Context mContext;
+
+    public GithubRepoAdapter(Context context) {
+        mContext = context;
+    }
 
     @Override
     public int getCount() {
@@ -54,7 +60,7 @@ public class GithubRepoAdapter extends BaseAdapter {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_github_repo, parent, false);
 
-        GithubViewHolder gitHubViewHolder = new GithubViewHolder(view);
+        GithubViewHolder gitHubViewHolder = new GithubViewHolder(view, mContext);
         view.setTag(gitHubViewHolder);
 
         return view;
@@ -66,23 +72,25 @@ public class GithubRepoAdapter extends BaseAdapter {
     }
 
     private static class GithubViewHolder {
+        Context context;
         private TextView textRepoName;
         private TextView textRepoDescription;
         private TextView textRepoLanguage;
         private TextView textStars;
 
-        public GithubViewHolder(View itemView) {
+        public GithubViewHolder(View itemView, Context context) {
             textRepoName = itemView.findViewById(R.id.text_repo_name);
             textRepoDescription = itemView.findViewById(R.id.text_repo_description);
             textRepoLanguage = itemView.findViewById(R.id.text_repo_language);
             textStars = itemView.findViewById(R.id.text_stars);
+            this.context = context;
         }
 
         public void setGithubRepo(GithubRepo githubRepo) {
             textRepoName.setText(githubRepo.getName());
             textRepoDescription.setText(githubRepo.getDescription());
-            textRepoLanguage.setText("Language: " + githubRepo.getLanguage());
-            textStars.setText("Stars: " + githubRepo.getStargazersCount());
+            textRepoLanguage.setText(context.getString(R.string.repo_language, githubRepo.getLanguage()));
+            textStars.setText(context.getString(R.string.repo_stars, githubRepo.getStargazersCount()));
 
         }
     }

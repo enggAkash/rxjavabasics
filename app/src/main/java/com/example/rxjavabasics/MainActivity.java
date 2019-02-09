@@ -20,7 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private GithubRepoAdapter adapter = new GithubRepoAdapter();
+    private GithubRepoAdapter adapter = new GithubRepoAdapter(this);
     private Disposable disposable;
 
     @Override
@@ -41,28 +41,6 @@ public class MainActivity extends AppCompatActivity {
                     getStarredRepos(userName);
             }
         });
-
-        Observer<String> observer = new Observer<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
 
     }
 
