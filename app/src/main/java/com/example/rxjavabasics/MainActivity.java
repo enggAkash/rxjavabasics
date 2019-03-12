@@ -1,5 +1,6 @@
 package com.example.rxjavabasics;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -39,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
                 String userName = editTextUsername.getText().toString().trim();
                 if (!TextUtils.isEmpty(userName))
                     getStarredRepos(userName);
+            }
+        });
+
+        findViewById(R.id.second_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
+
+        findViewById(R.id.rxjava_with_retrofit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RxjavaWithRetrofit.class));
             }
         });
 

@@ -10,6 +10,18 @@
     android:paddingBottom="16dp"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/second_activity"
+        android:text="Second Actitivy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/rxjava_with_retrofit"
+        android:text="RxJava with Retrofit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ListView
         android:id="@+id/list_view_repo"
         android:layout_width="match_parent"

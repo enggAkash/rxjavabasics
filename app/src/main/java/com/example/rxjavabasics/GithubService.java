@@ -1,5 +1,7 @@
 package com.example.rxjavabasics;
 
+import com.example.rxjavabasics.model.ArticlePost;
+
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -10,4 +12,8 @@ public interface GithubService {
 
     @GET("users/{user}/starred")
     Observable<List<GithubRepo>> getStarredRepositories(@Path("user") String userName);
+
+    @GET("posts")
+    Observable<List<ArticlePost>> getPosts();
+
 }

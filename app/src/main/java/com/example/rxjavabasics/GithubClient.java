@@ -1,5 +1,6 @@
 package com.example.rxjavabasics;
 
+import com.example.rxjavabasics.model.ArticlePost;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,6 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GithubClient {
 
     private static final String GITHUB_BASE_URL = "https://api.github.com/";
+    private static final String JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com/";
 
     private static GithubClient instance;
     private static GithubService githubService;
@@ -24,7 +26,7 @@ public class GithubClient {
 
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl(GITHUB_BASE_URL)
+                .baseUrl(JSON_PLACEHOLDER_BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -40,6 +42,10 @@ public class GithubClient {
 
     public Observable<List<GithubRepo>> getStarredRepo(@NonNull String userName) {
         return githubService.getStarredRepositories(userName);
+    }
+
+    public Observable<List<ArticlePost>> getArticlePosts() {
+        return githubService.getPosts();
     }
 
 }
